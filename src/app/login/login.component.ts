@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
-    this.service.login(this.userName, this.password).subscribe(value => {
+    this.service.mockLoginService(this.userName, this.password).subscribe(value => {
       this.isLoggedIn = value;
       if (this.isLoggedIn) {
         this.router.navigate(['/welcome/' + this.userName]);
@@ -27,9 +27,6 @@ export class LoginComponent implements OnInit {
       else {
         this.ErrorMessageMethod();
       }
-    }, error => {
-      this.isLoggedIn = false;
-      alert('Wrong username or password');
     }
     );
   }

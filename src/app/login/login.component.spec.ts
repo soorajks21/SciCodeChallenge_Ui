@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { assert } from 'console';
 
 class LoginServiceStub {
-  login() { }
+  mockLoginService() { }
 }
 
 class HttpClientStub {
@@ -46,7 +46,7 @@ describe('LoginComponent', () => {
   });
 
   it('it should call loginservice', () => {
-    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(true));
+    const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(true));
     component.userName = 'user';
     component.password = 'password';
     component.login();
@@ -54,7 +54,7 @@ describe('LoginComponent', () => {
   });
 
   it('it should set isLoggedIn to true', () => {
-    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(true));
+    const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(true));
     component.userName = 'user';
     component.password = 'password';
     component.login();
@@ -62,7 +62,7 @@ describe('LoginComponent', () => {
   });
 
   it('it should set isLoggedIn to false', () => {
-    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(false));
+    const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(false));
     component.userName = 'user';
     component.password = 'password';
     component.login();
