@@ -5,6 +5,7 @@ import { LoginComponent } from './login.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class LoginServiceStub {
   login() { }
@@ -22,7 +23,7 @@ fdescribe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       providers: [
         { provide: LoginService, useClass: LoginServiceStub },
         { provide: HttpClient, useClass: HttpClientStub }
