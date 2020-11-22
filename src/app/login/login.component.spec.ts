@@ -4,6 +4,7 @@ import { LoginService } from '../login.service';
 import { LoginComponent } from './login.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 class LoginServiceStub {
   login() { }
@@ -42,11 +43,27 @@ fdescribe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('it should login', () => {
-    const serviceSpy = spyOn(loginService, 'login').and.returnValue(true);
+  it('it should call loginservice', () => {
+    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(true));
     component.userName = 'user';
     component.password = 'password';
     component.login();
     expect(serviceSpy).toHaveBeenCalled();
+  });
+
+  it('it should set isLoggedIn to true', () => {
+    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(true));
+    component.userName = 'user';
+    component.password = 'password';
+    component.login();
+    expect(component.isLoggedIn).toBeTrue();
+  });
+
+  it('it should set isLoggedIn to false', () => {
+    const serviceSpy = spyOn(loginService, 'login').and.returnValue(of(false));
+    component.userName = 'user';
+    component.password = 'password';
+    component.login();
+    expect(component.isLoggedIn).toBeFalse();
   });
 });

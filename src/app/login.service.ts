@@ -15,9 +15,6 @@ export class LoginService {
       userName: Username,
       password: Password
     };
-    this.http.post(this.url, user, {}).subscribe(value => {
-      return value;
-    });
-    return false;
+    return this.http.post(this.url, user, {});
   }
 }
