@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { assert } from 'console';
 
 class LoginServiceStub {
   login() { }
@@ -15,7 +16,7 @@ class HttpClientStub {
   handler() { }
 }
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let injector: TestBed;
   let component: LoginComponent;
   let loginService: LoginService;

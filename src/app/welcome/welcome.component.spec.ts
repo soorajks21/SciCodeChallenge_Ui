@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from "@angular/router/testing";
 import { WelcomeComponent } from './welcome.component';
 
 describe('WelcomeComponent', () => {
@@ -8,7 +8,10 @@ describe('WelcomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WelcomeComponent ]
+      declarations: [WelcomeComponent],
+      imports: [
+        RouterTestingModule
+    ]
     })
     .compileComponents();
   }));
@@ -18,8 +21,11 @@ describe('WelcomeComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it(`should have as title Welcome user`, () => {
+    const fixture = TestBed.createComponent(WelcomeComponent);
+    const app = fixture.componentInstance;
+    component.user = 'Sooraj';
+    component.welcomeMessage();
+    expect(component.message).toEqual('Welcome Sooraj');
   });
 });

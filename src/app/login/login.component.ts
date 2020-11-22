@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +20,16 @@ export class LoginComponent implements OnInit {
   login() {
     this.service.login(this.userName, this.password).subscribe(value => {
       this.isLoggedIn = value;
-      if (this.isLoggedIn)
-      {
-        this.router.navigate(['/welcome']);
+      if (this.isLoggedIn) {
+        this.router.navigate(['/welcome/'+this.userName]);
       }
       else {
-        alert("Wrong username or password");
+        alert('Wrong username or password');
       }
-    });
+    }, error => {
+      this.isLoggedIn = false;
+      alert('Wrong username or password');
+    }
+    );
   }
 }
