@@ -67,5 +67,6 @@ describe('LoginComponent', () => {
     component.password = 'password';
     component.login();
     expect(component.isLoggedIn).toBeFalse();
+    expect(component.errorMessage).toEqual('Invalid Username or password');
   });
 });

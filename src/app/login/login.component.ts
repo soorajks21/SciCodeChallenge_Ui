@@ -15,16 +15,17 @@ export class LoginComponent implements OnInit {
   public userName: string;
   public password: string;
   public isLoggedIn;
+  errorMessage: string;
   ngOnInit(): void {
   }
   login() {
     this.service.login(this.userName, this.password).subscribe(value => {
       this.isLoggedIn = value;
       if (this.isLoggedIn) {
-        this.router.navigate(['/welcome/'+this.userName]);
+        this.router.navigate(['/welcome/' + this.userName]);
       }
       else {
-        alert('Wrong username or password');
+        this.ErrorMessageMethod();
       }
     }, error => {
       this.isLoggedIn = false;
@@ -32,4 +33,9 @@ export class LoginComponent implements OnInit {
     }
     );
   }
+
+  ErrorMessageMethod() { 
+    this.errorMessage = "Invalid Username or password";
+  }
+
 }
