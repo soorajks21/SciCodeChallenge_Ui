@@ -24,8 +24,8 @@ describe('WelcomeComponent', () => {
   it(`should have as title Welcome user`, () => {
     const fixture = TestBed.createComponent(WelcomeComponent);
     const app = fixture.componentInstance;
-    component.user = 'Sooraj';
+    component.user = 'sooraj';
     component.welcomeMessage();
-    expect(component.message).toEqual('Welcome Sooraj');
+    expect(component.message).toEqual('Welcome sooraj');
   });
 });
