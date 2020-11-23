@@ -47,23 +47,24 @@ describe('LoginComponent', () => {
 
   it('it should call loginservice', () => {
     const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(true));
-    component.userName = 'user';
-    component.password = 'password';
+    component.userName = 'sooraj';
+    component.password = 'Password';
     component.login();
     expect(serviceSpy).toHaveBeenCalled();
   });
 
   it('it should set isLoggedIn to true', () => {
     const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(true));
-    component.userName = 'user';
-    component.password = 'password';
+    component.userName = 'sooraj';
+    component.password = 'Password';
     component.login();
+    console.log('componet', component.isLoggedIn);
     expect(component.isLoggedIn).toBeTrue();
   });
 
   it('it should set isLoggedIn to false', () => {
     const serviceSpy = spyOn(loginService, 'mockLoginService').and.returnValue(of(false));
-    component.userName = 'user';
+    component.userName = 'sooraj';
     component.password = 'password';
     component.login();
     expect(component.isLoggedIn).toBeFalse();
